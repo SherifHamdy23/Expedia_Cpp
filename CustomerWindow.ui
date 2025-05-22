@@ -6,16 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>823</width>
-    <height>600</height>
+    <width>688</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Travel Planner</string>
+  </property>
+  <property name="styleSheet">
+   <string>background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #A1CFFF, stop:1 #F5E7D2);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>20</number>
+    </property>
+    <item>
      <widget class="QLabel" name="welcomeLabel">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -23,40 +29,88 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string>color: #FFFFFF; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);</string>
       </property>
       <property name="text">
-       <string/>
+       <string>Welcome to Your Journey</string>
       </property>
-      <property name="scaledContents">
-       <bool>true</bool>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="3" column="0">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <item row="2" column="0">
        <widget class="QPushButton" name="hotelswinBtn">
-        <property name="text">
-         <string>hotels</string>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>60</height>
+         </size>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_2">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string>background-color: #50C878; color: white; border-radius: 10px; padding: 10px;</string>
+        </property>
         <property name="text">
-         <string>Soon</string>
+         <string>Hotels</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
        <widget class="QPushButton" name="flightwinBtn">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string>background-color: #4A90E2; color: white; border-radius: 10px; padding: 10px;</string>
+        </property>
         <property name="text">
-         <string>flights</string>
+         <string>Flights</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string>background-color: #F5A623; color: white; border-radius: 10px; padding: 10px;</string>
+        </property>
+        <property name="text">
+         <string>Soon</string>
         </property>
        </widget>
       </item>
@@ -69,12 +123,19 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>823</width>
-     <height>25</height>
+     <width>688</width>
+     <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string>background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #A1CFFF, stop:1 #4A90E2); color: white;</string>
+   </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string>background-color: rgba(245, 231, 210, 0.8); color: #333333;</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

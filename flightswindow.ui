@@ -6,62 +6,108 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>584</width>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Flight Management</string>
+  </property>
+  <property name="styleSheet">
+   <string>background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #F5F5F5);
+           background-image: url('https://www.transparentpng.com/thumb/plane/transparent-airplane-png-image-2.png');
+           background-repeat: no-repeat;
+           background-position: center 20%;
+           background-size: 150px;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableView" name="tableView">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>70</y>
-      <width>621</width>
-      <height>401</height>
-     </rect>
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>15</number>
     </property>
-   </widget>
-   <widget class="QPushButton" name="backBtn">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>161</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Back to Main window</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="AddFlight">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>20</y>
-      <width>82</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add Flight</string>
-    </property>
-   </widget>
+    <item>
+     <layout class="QHBoxLayout" name="buttonLayout">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="backBtn">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string>background-color: #1E3A8A; color: white; border-radius: 8px; padding: 5px;</string>
+        </property>
+        <property name="text">
+         <string>Back to Main Window</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="AddFlight">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string>background-color: #4CAF50; color: white; border-radius: 8px; padding: 5px;</string>
+        </property>
+        <property name="text">
+         <string>Add Flight</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string>background-color: #FFFFFF; alternate-background-color: #F0F8FF; 
+               gridline-color: #87CEEB; border: 1px solid #87CEEB; border-radius: 5px;</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>25</height>
+     <width>584</width>
+     <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string>background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #1E3A8A); color: white;</string>
+   </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string>background-color: rgba(245, 245, 245, 0.8); color: #333333;</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
