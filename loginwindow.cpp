@@ -2,10 +2,11 @@
 #include "signupwindow.h"
 #include "ui_loginwindow.h"
 #include "hotelswindow.h"
-#include "mainwindow.h"
+#include "CustomerWindow.h"
 #include <QDebug>
 #include <iostream>
 #include "Expedia.hpp"
+#include "managerwindow.h"
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -43,7 +44,11 @@ void LoginWindow::on_LoginBtn_clicked()
             std::cout << "password matched" << std::endl;
             GlobalState::setCurrentUser(user);
             this->close();
-            MainWindow *form = new MainWindow;
+            QWidget *form = nullptr; // Initialize to nullptr for safety
+            if (user->role == "manager")
+                form = new ManagerWindow;
+            else
+                form = new CustomerWindow;
             form->show();
 
         }

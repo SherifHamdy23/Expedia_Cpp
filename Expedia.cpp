@@ -87,8 +87,8 @@ double Itinerary::getTotalCost() const {
 }
 
 // User implementation
-User::User(const std::string& uname, const std::string& pwd, const std::string& fname)
-    : username(uname), password(pwd), fullName(fname), itineraries() {}
+User::User(const std::string& uname, const std::string& pwd, const std::string& fname, const std::string& role)
+    : username(uname), password(pwd), fullName(fname), role(role), itineraries() {}
 
 // GlobalState implementations
 User* GlobalState::getCurrentUser() { return currentUser; }
@@ -98,5 +98,6 @@ void GlobalState::setCurrentItinerary(Itinerary* value) { currentItinerary = val
 
 // Initialize default user
 void InitializeUsers() {
-    GlobalState::Users["shefoo"] = new User("shefoo", "password", "Sherif Hamdy Mohamed");
+    GlobalState::Users["shefoo"] = new User("shefoo", "password", "Sherif Hamdy Mohamed", "customer");
+    GlobalState::Users["admin"] = new User("admin", "admin", "Dr/ Tayseer Fahmy", "manager");
 }

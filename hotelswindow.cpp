@@ -3,7 +3,7 @@
 #include "Expedia.hpp"
 #include <QTableView>
 #include <QStandardItemModel>
-#include "mainwindow.h"
+#include "CustomerWindow.h"
 
 
 
@@ -92,7 +92,7 @@ HotelsWindow::~HotelsWindow()
 void HotelsWindow::on_backBtn_clicked()
 {
     this->close();
-    MainWindow *mainWin = new MainWindow;
+    CustomerWindow *mainWin = new CustomerWindow;
     mainWin->show();
 }
 

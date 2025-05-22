@@ -9,30 +9,36 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    CustomerWindow.cpp \
     Expedia.cpp \
     addflight.cpp \
     flightswindow.cpp \
     hotelswindow.cpp \
+    layout.cpp \
     loginwindow.cpp \
     main.cpp \
-    mainwindow.cpp \
+    managerwindow.cpp \
     signupwindow.cpp
 
 HEADERS += \
+    CustomerWindow.h \
     Expedia.hpp \
     addflight.h \
     flightswindow.h \
     hotelswindow.h \
+    layout.h \
     loginwindow.h \
-    mainwindow.h \
+    managerwindow.h \
     signupwindow.h
 
 FORMS += \
+    CustomerWindow.ui \
     addflight.ui \
     flightswindow.ui \
     hotelswindow.ui \
+    layout.ui \
     loginwindow.ui \
-    mainwindow.ui \
+    managerwindow.ui \
     signupwindow.ui
 
 # Default rules for deployment.

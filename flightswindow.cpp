@@ -3,7 +3,7 @@
 #include "Expedia.hpp"
 #include <QTableView>
 #include <QStandardItemModel>
-#include "mainwindow.h"
+#include "CustomerWindow.h"
 #include "addflight.h"
 
 std::map<int, std::string> columns = {
@@ -13,17 +13,31 @@ std::map<int, std::string> columns = {
     {3, "Price"},
 };
 
+void flightsWindow::onEditBtnClicked(int row, QString name) {
+    qDebug() << name.toStdString();
+}
+
+
 flightsWindow::flightsWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::flightsWindow)
 {
     ui->setupUi(this);
+    // get current authenticated user
+    User *user = GlobalState::getCurrentUser();
+    bool isManager = (user->role == "manager") ? true : false;
+
+    if (!isManager) {
+        ui->AddFlight->hide();
+    }
 
     QTableView *tableview = ui->tableView;
     QStandardItemModel *model = new QStandardItemModel(4, 3, tableview);
-
     // Set headers
-    model->setHorizontalHeaderLabels({"Airline", "Price", "date_time_from", "data_time_to"});
+    if (isManager)
+        model->setHorizontalHeaderLabels({"Airline", "Price", "date_time_from", "data_time_to", "Actions"});
+    else
+        model->setHorizontalHeaderLabels({"Airline", "Price", "date_time_from", "data_time_to"});
 
 
     std::string from = "New York";
@@ -56,7 +70,7 @@ flightsWindow::flightsWindow(QWidget *parent)
     size_t actual_row_index = 0;
     for (size_t row = 0; row < Turkishflights.size(); ++row) {
         actual_row_index = (actual_row_index == 0) ? model->rowCount() + row : actual_row_index + 1;
-        for (size_t col = 0; col < columns.size(); ++col) {
+        for (size_t col = 0; col < ((isManager) ? columns.size() + 1 : columns.size()) ; ++col) {
             if (col == 0) {
                 item = new QStandardItem(QString("Turkish Airline"));
             } else if (col == 1) {
@@ -73,6 +87,22 @@ flightsWindow::flightsWindow(QWidget *parent)
 
     // Connect the model to the table view
     tableview->setModel(model);
+
+    // Get User
+
+    if (isManager) {
+        // Add QPushButton to each cell in column 4
+        for (int row = 0; row < model->rowCount(); ++row) {
+            // Fetch Name from column 0
+
+            QPushButton *editBtn = new QPushButton("Edit", tableview);
+            tableview->setIndexWidget(model->index(row, 4), editBtn);
+            QString name = model->data(model->index(row, 0)).toString();
+            connect(editBtn, &QPushButton::clicked, this, [this, row, name]() {
+                flightsWindow::onEditBtnClicked(row, name);
+            });
+        }
+    }
     tableview->setSelectionMode(QAbstractItemView::SingleSelection);
     tableview->setSelectionBehavior(QAbstractItemView::SelectRows);
     tableview->horizontalHeader()->setStretchLastSection(true);
@@ -83,15 +113,17 @@ flightsWindow::~flightsWindow()
     delete ui;
 }
 
+
+
 void flightsWindow::on_backBtn_clicked()
 {
     this->close();
-    MainWindow *mainWin = new MainWindow;
+    CustomerWindow *mainWin = new CustomerWindow;
     mainWin->show();
 }
 
 
-void flightsWindow::on_pushButton_clicked()
+void flightsWindow::on_AddFlight_clicked()
 {
     AddFlight *addFlight = new AddFlight;
     addFlight->show();

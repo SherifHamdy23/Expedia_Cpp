@@ -14,11 +14,11 @@ class flightsWindow : public QMainWindow
 public:
     explicit flightsWindow(QWidget *parent = nullptr);
     ~flightsWindow();
+    void onEditBtnClicked(int, QString);
 
 private slots:
     void on_backBtn_clicked();
-
-    void on_pushButton_clicked();
+    void on_AddFlight_clicked();
 
 private:
     Ui::flightsWindow *ui;

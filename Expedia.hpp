@@ -89,9 +89,10 @@ struct Itinerary {
 };
 
 struct User {
-    std::string username, password, fullName;
+    std::string username, password, fullName, role;
     std::vector<Itinerary*> itineraries;
-    User(const std::string& uname, const std::string& pwd, const std::string& fname);
+    //roles : customer | manager
+    User(const std::string& uname, const std::string& pwd, const std::string& fname, const std::string& role);
 };
 
 // Global state manager

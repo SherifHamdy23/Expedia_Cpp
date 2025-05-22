@@ -37,7 +37,7 @@
      <string>Back to Main window</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="AddFlight">
     <property name="geometry">
      <rect>
       <x>650</x>

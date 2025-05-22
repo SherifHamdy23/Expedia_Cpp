@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "CustomerWindow.h"
 #include "Expedia.hpp"
 #include "loginwindow.h"
 #include "flightswindow.h"
@@ -6,6 +6,7 @@
 #include <iostream>
 #include <QApplication>
 #include <QDebug>
+#include "layout.h"
 
 
 int main(int argc, char *argv[])
