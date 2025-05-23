@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-class LoginWindow;
+namespace Ui
+{
+    class LoginWindow;
 }
 
 class LoginWindow : public QMainWindow
@@ -15,12 +16,9 @@ public:
     explicit LoginWindow(QWidget *parent = nullptr);
     ~LoginWindow();
 
-
-
-
 private slots:
-    void on_RegisterBtn_clicked();
     void on_LoginBtn_clicked();
+    void on_RegisterBtn_clicked();
 
 private:
     Ui::LoginWindow *ui;

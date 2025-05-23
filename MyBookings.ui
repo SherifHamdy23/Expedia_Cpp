@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MyBookings</class>
+ <widget class="QMainWindow" name="MyBookings">
+  <property name="windowTitle">
+   <string>My Bookings</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow { background-color: #F5F6F5; }
+QTableView { 
+    border: 1px solid #CCCCCC; 
+    background-color: #FFFFFF; 
+    alternate-background-color: #E8ECEF; 
+    font-size: 14px; 
+}
+QHeaderView::section { 
+    background-color: #0071C2; 
+    color: #FFFFFF; 
+    padding: 8px; 
+    border: 1px solid #CCCCCC; 
+}
+QPushButton { 
+    background-color: #0071C2; 
+    color: #FFFFFF; 
+    border-radius: 8px; 
+    padding: 10px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+QPushButton:hover { background-color: #005BB5; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>My Bookings</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableView"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="backButton">
+      <property name="text">
+       <string>Back to Main Window</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>backButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MyBookings</receiver>
+   <slot>close()</slot>
+  </connection>
+ </connections>
+</ui>

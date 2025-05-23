@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-class ManagerWindow;
+namespace Ui
+{
+    class ManagerWindow;
 }
 
 class ManagerWindow : public QMainWindow
@@ -16,13 +17,11 @@ public:
     ~ManagerWindow();
 
 private slots:
-    void on_flightwinBtn_clicked();
-    void on_hotelswinBtn_clicked();
+    void on_flightsButton_clicked();
+    void on_hotelsButton_clicked();
 
 private:
     Ui::ManagerWindow *ui;
 };
-
-
 
 #endif // MANAGERWINDOW_H

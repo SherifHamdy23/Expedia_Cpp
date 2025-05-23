@@ -1,16 +1,15 @@
 #include "loginwindow.h"
-#include "signupwindow.h"
 #include "ui_loginwindow.h"
-#include "hotelswindow.h"
-#include "CustomerWindow.h"
-#include <QDebug>
-#include <iostream>
-#include "Expedia.hpp"
+#include "signupwindow.h"
 #include "managerwindow.h"
+#include "CustomerWindow.h"
+#include "Expedia.hpp"
+#include <QMessageBox>
+#include <QSqlQuery>
+#include <QSqlDatabase>
 
 LoginWindow::LoginWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::LoginWindow)
+    : QMainWindow(parent), ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
 }
@@ -20,45 +19,65 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+void LoginWindow::on_LoginBtn_clicked()
+{
+    QString username = ui->usernameInput->text();
+    QString password = ui->passwordInput->text();
+
+    if (username.isEmpty() || password.isEmpty())
+    {
+        QMessageBox::critical(this, "Error", "Please fill in all fields");
+        return;
+    }
+
+    QSqlDatabase db = QSqlDatabase::database();
+    if (db.open())
+    {
+        QSqlQuery query(db);
+        query.prepare("SELECT password, role, fullName FROM users WHERE username = :username");
+        query.bindValue(":username", username);
+        if (query.exec() && query.next())
+        {
+            QString storedPassword = query.value("password").toString();
+            QString hashedPassword = hashPassword(password);
+            if (storedPassword == hashedPassword)
+            {
+                QString role = query.value("role").toString();
+                QString fullName = query.value("fullName").toString();
+                GlobalState::setCurrentUser(new User{username.toStdString(), fullName.toStdString(), role.toStdString()});
+
+                if (role == "manager")
+                {
+                    ManagerWindow *managerWin = new ManagerWindow(this);
+                    managerWin->show();
+                }
+                else
+                {
+                    CustomerWindow *customerWin = new CustomerWindow(this);
+                    customerWin->show();
+                }
+                this->hide();
+            }
+            else
+            {
+                QMessageBox::critical(this, "Error", "Invalid username or password");
+            }
+        }
+        else
+        {
+            QMessageBox::critical(this, "Error", "Invalid username or password");
+        }
+        db.close();
+    }
+    else
+    {
+        QMessageBox::critical(this, "Error", "Failed to connect to database");
+    }
+}
 
 void LoginWindow::on_RegisterBtn_clicked()
 {
-    qDebug() << "Register Btn Clicked";
-    signupwindow *form = new signupwindow(); // Allocate on heap
-    form->show();
-    this->close();
-
+    signupwindow *signupWin = new signupwindow(this);
+    signupWin->show();
+    this->hide();
 }
-
-
-void LoginWindow::on_LoginBtn_clicked()
-{
-    std::map<std::string, User*> users = GlobalState::Users;
-    std::string username = ui->usernameInput->text().toStdString();
-    std::string passwd = ui->passwordInput->text().toStdString();
-    auto search = users.find(username);
-    if (search != users.end()) {
-        std::cout << username << " found in users" << std::endl;
-        User *user = users[username];
-        if (user->password == passwd) {
-            std::cout << "password matched" << std::endl;
-            GlobalState::setCurrentUser(user);
-            this->close();
-            QWidget *form = nullptr; // Initialize to nullptr for safety
-            if (user->role == "manager")
-                form = new ManagerWindow;
-            else
-                form = new CustomerWindow;
-            form->show();
-
-        }
-    } else
-        std:: cout << username << " not found in users" << std::endl;
-
-    User *user = GlobalState::getCurrentUser();
-    if (user != nullptr)
-        qDebug() << "user is set";
-    qDebug() << "you clicked Login Btn";
-
-}
-

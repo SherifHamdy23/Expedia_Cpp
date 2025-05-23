@@ -3,26 +3,26 @@
 
 #include <QMainWindow>
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class CustomerWindow;
+namespace Ui
+{
+    class CustomerWindow;
 }
-QT_END_NAMESPACE
 
 class CustomerWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    CustomerWindow(QWidget *parent = nullptr);
+    explicit CustomerWindow(QWidget *parent = nullptr);
     ~CustomerWindow();
 
 private slots:
-    void on_flightwinBtn_clicked();
-
-    void on_hotelswinBtn_clicked();
+    void on_flightsButton_clicked();
+    void on_hotelsButton_clicked();
+    void on_myBookingsButton_clicked();
 
 private:
     Ui::CustomerWindow *ui;
 };
+
 #endif // CUSTOMERWINDOW_H

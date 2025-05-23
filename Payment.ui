@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Payment</class>
+ <widget class="QDialog" name="Payment">
+  <property name="windowTitle">
+   <string>Payment</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog { background-color: #F5F6F5; }
+QLabel { font-family: 'Roboto', sans-serif; font-size: 16px; color: #333333; }
+QLineEdit { 
+    border: 1px solid #CCCCCC; 
+    border-radius: 5px; 
+    padding: 8px; 
+    font-size: 14px; 
+    background-color: #FFFFFF; 
+}
+QLineEdit:focus { border-color: #0071C2; }
+QPushButton { 
+    background-color: #0071C2; 
+    color: #FFFFFF; 
+    border-radius: 8px; 
+    padding: 10px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+QPushButton:hover { background-color: #005BB5; }</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Payment Details</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Roboto</family>
+       <pointsize>24</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Card Number</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="cardNumberInput"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Expiry Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="expiryDateInput"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>CVV</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="cvvInput">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="payButton">
+       <property name="text">
+        <string>Pay</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>payButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Payment</receiver>
+   <slot>accept()</slot>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Payment</receiver>
+   <slot>reject()</slot>
+  </connection>
+ </connections>
+</ui>

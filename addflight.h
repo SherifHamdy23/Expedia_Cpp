@@ -3,8 +3,9 @@
 
 #include <QDialog>
 
-namespace Ui {
-class AddFlight;
+namespace Ui
+{
+    class AddFlight;
 }
 
 class AddFlight : public QDialog
@@ -14,6 +15,10 @@ class AddFlight : public QDialog
 public:
     explicit AddFlight(QWidget *parent = nullptr);
     ~AddFlight();
+
+private slots:
+    void on_buttonBox_accepted();
+    void on_buttonBox_rejected();
 
 private:
     Ui::AddFlight *ui;

@@ -2,23 +2,15 @@
 <ui version="4.0">
  <class>AddFlight</class>
  <widget class="QDialog" name="AddFlight">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>653</width>
-    <height>413</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>Add Flight</string>
   </property>
   <property name="styleSheet">
-   <string>background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #FFFFFF);
-           background-image: url('https://www.transparentpng.com/thumb/plane/transparent-airplane-png-image-2.png');
-           background-repeat: no-repeat;
-           background-position: center 50%;
-           background-size: 100px;</string>
+   <string notr="true">background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #FFFFFF);
+background-image: url('https://www.transparentpng.com/thumb/plane/transparent-airplane-png-image-2.png');
+background-repeat: no-repeat;
+background-position: center 50%;
+background-size: 100px;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -26,82 +18,134 @@
    </property>
    <item>
     <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
      <property name="styleSheet">
-      <string>color: #1E3A8A; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);</string>
+      <string notr="true">color: #1E3A8A; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);</string>
      </property>
      <property name="text">
       <string>Add Flight</string>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="spacing">
-      <number>15</number>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="labelAlignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
-     <item>
+     <item row="0" column="0">
       <widget class="QLabel" name="label_2">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
        <property name="styleSheet">
-        <string>color: #1E3A8A; qproperty-icon: url('https://www.svgrepo.com/show/126156/plane-takeoff.svg'); qproperty-iconSize: 20px 20px;</string>
+        <string notr="true">color: #1E3A8A; qproperty-icon: url('https://www.svgrepo.com/show/126156/plane-takeoff.svg'); qproperty-iconSize: 20px 20px;</string>
        </property>
        <property name="text">
         <string>From</string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="comboBox">
-       <property name="minimumSize">
-        <size>
-         <width>180</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string>background-color: #FFFFFF; border: 2px solid #4A90E2; border-radius: 8px; padding: 5px; color: #333333;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
         </font>
        </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="fromInput">
        <property name="styleSheet">
-        <string>color: #1E3A8A; qproperty-icon: url('https://www.svgrepo.com/show/126157/plane-landing.svg'); qproperty-iconSize: 20px 20px;</string>
+        <string notr="true">background-color: #FFFFFF; border: 2px solid #4A90E2; border-radius: 8px; padding: 5px; color: #333333;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="styleSheet">
+        <string notr="true">color: #1E3A8A; qproperty-icon: url('https://www.svgrepo.com/show/126157/plane-landing.svg'); qproperty-iconSize: 20px 20px;</string>
        </property>
        <property name="text">
         <string>To</string>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
       </widget>
      </item>
-     <item>
-      <widget class="QComboBox" name="comboBox_2">
-       <property name="minimumSize">
-        <size>
-         <width>180</width>
-         <height>40</height>
-        </size>
-       </property>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="toInput">
        <property name="styleSheet">
-        <string>background-color: #FFFFFF; border: 2px solid #4A90E2; border-radius: 8px; padding: 5px; color: #333333;</string>
+        <string notr="true">background-color: #FFFFFF; border: 2px solid #4A90E2; border-radius: 8px; padding: 5px; color: #333333;</string>
        </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Price</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDoubleSpinBox" name="priceInput">
+       <property name="value">
+        <double>0.0</double>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Departure Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDateEdit" name="departureDateInput">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Return Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QDateEdit" name="returnDateInput">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Airline</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="airlineCombo">
+       <item>
+        <property name="text">
+         <string>AirCanada</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>TurkishAirlines</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
@@ -109,14 +153,14 @@
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="styleSheet">
-      <string>QPushButton:enabled[text=&quot;OK&quot;] { background-color: #4A90E2; color: white; border-radius: 8px; padding: 8px; min-width: 100px; }
-              QPushButton:enabled[text=&quot;Cancel&quot;] { background-color: #F5A623; color: white; border-radius: 8px; padding: 8px; min-width: 100px; }</string>
+      <string notr="true">QPushButton:enabled[text="OK"] { background-color: #4A90E2; color: white; border-radius: 8px; padding: 8px; min-width: 100px; }
+QPushButton:enabled[text="Cancel"] { background-color: #F5A623; color: white; border-radius: 8px; padding: 8px; min-width: 100px; }</string>
      </property>
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
@@ -131,12 +175,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>263</x>
+     <y>376</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>326</x>
+     <y>396</y>
     </hint>
    </hints>
   </connection>
@@ -147,12 +191,12 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>344</x>
+     <y>376</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>326</x>
+     <y>396</y>
     </hint>
    </hints>
   </connection>

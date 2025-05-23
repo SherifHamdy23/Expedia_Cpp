@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-class signupwindow;
+namespace Ui
+{
+    class signupwindow;
 }
 
 class signupwindow : public QMainWindow

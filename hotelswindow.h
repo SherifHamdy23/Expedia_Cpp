@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-class HotelsWindow;
+namespace Ui
+{
+    class HotelsWindow;
 }
 
 class HotelsWindow : public QMainWindow
@@ -16,7 +17,9 @@ public:
     ~HotelsWindow();
 
 private slots:
-    void on_backBtn_clicked();
+    void onSearchBtnClicked();
+    void performSearch(const QString &city, const QString &checkInDate, const QString &checkOutDate, int adults, int children);
+    void on_backButton_clicked();
 
 private:
     Ui::HotelsWindow *ui;

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BookingConfirmation</class>
+ <widget class="QDialog" name="BookingConfirmation">
+  <property name="windowTitle">
+   <string>Confirm Booking</string>
+  </property>
+  <property name="styleSheet">
+   <string>QDialog { background-color: #F5F6F5; }
+QLabel { font-family: 'Roboto', sans-serif; font-size: 16px; color: #333333; }
+QPushButton { 
+  background-color: #0071C2; 
+  color: #FFFFFF; 
+  border-radius: 8px; 
+  padding: 10px; 
+  font-size: 14px; 
+  font-weight: bold; 
+}
+QPushButton:hover { background-color: #005BB5; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Booking Confirmation</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roboto</family>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="detailsLabel">
+      <property name="text">
+       <string>Booking Details</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="confirmButton">
+        <property name="text">
+         <string>Confirm</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancelButton">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>confirmButton</sender>
+   <signal>clicked()</signal>
+   <receiver>BookingConfirmation</receiver>
+   <slot>accept()</slot>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>BookingConfirmation</receiver>
+   <slot>reject()</slot>
+  </connection>
+ </connections>
+</ui>

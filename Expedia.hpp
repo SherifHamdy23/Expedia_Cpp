@@ -1,115 +1,119 @@
 #ifndef EXPEDIA_HPP
 #define EXPEDIA_HPP
 
-#include <string>
+#include <QString>
 #include <vector>
-#include <map>
+#include <memory>
+bool InitializeDatabase();
+void InitializeUsers();
+struct User
+{
+    std::string username;
+    std::string fullName;
+    std::string role;
+};
 
-// Simulated API structures
-struct AirCanadaFlight {
+struct AirCanadaFlight
+{
+    int id;
     double price;
     std::string date_time_from;
     std::string date_time_to;
 };
 
-struct TurkishFlight {
+struct TurkishFlight
+{
+    int id;
     double price;
     std::string date_time_from;
     std::string date_time_to;
 };
 
-struct HiltonRoom {
+struct HiltonRoom
+{
+    int id;
     std::string room_type;
     double price_per_night;
     std::string date_from;
     std::string date_to;
+    int nights = 1;
 };
 
-struct MarriottRoom {
+struct MarriottRoom
+{
+    int id;
     std::string room_type;
     double price_per_night;
     std::string date_from;
     std::string date_to;
+    int nights = 1;
 };
 
-// Simulated APIs
-class AirCanadaAPI {
+class Itinerary
+{
 public:
-    static std::vector<AirCanadaFlight*> GetFlights(const std::string& from, const std::string& to,
-                                                     const std::string& fromDate, const std::string& toDate,
-                                                     int adults, int children);
-    static bool ReserveFlight(AirCanadaFlight* flight);
-    static bool CancelFlight(AirCanadaFlight* flight);
-};
-
-class TurkishAirlinesAPI {
-public:
-    static std::vector<TurkishFlight*> GetFlights(const std::string& from, const std::string& to,
-                                                   const std::string& fromDate, const std::string& toDate,
-                                                   int adults, int children, int infants);
-    static bool ReserveFlight(TurkishFlight* flight);
-    static bool CancelFlight(TurkishFlight* flight);
-};
-
-class HotelAPI {
-public:
-    static std::vector<HiltonRoom*> GetHiltonRooms(const std::string& city, const std::string& fromDate,
-                                                    const std::string& toDate, int adults, int children);
-    static std::vector<MarriottRoom*> GetMarriottRooms(const std::string& city, const std::string& fromDate,
-                                                        const std::string& toDate, int adults, int children);
-    static bool ReserveRoom(HiltonRoom* room);
-    static bool ReserveRoom(MarriottRoom* room);
-    static bool CancelRoom(HiltonRoom* room);
-    static bool CancelRoom(MarriottRoom* room);
-};
-
-class StripeAPI {
-public:
-    static bool WithdrawMoney(const std::string& user, const std::string& card, double amount);
-};
-
-// Data structures
-struct Flight {
-    std::string airline, from, to, departure, arrival;
-    double price;
-    int adults, children, infants;
-};
-
-struct Hotel {
-    std::string name, city, country, roomType, from, to;
-    double pricePerNight;
-    int nights, adults, children;
-};
-
-struct Itinerary {
-    std::vector<Flight*> flights;
-    std::vector<Hotel*> hotels;
-    Itinerary();
+    std::vector<std::unique_ptr<AirCanadaFlight>> flights;
+    std::vector<std::unique_ptr<TurkishFlight>> turkish_flights;
+    std::vector<std::unique_ptr<HiltonRoom>> hotels;
+    std::vector<std::unique_ptr<MarriottRoom>> marriott_rooms;
     double getTotalCost() const;
 };
 
-struct User {
-    std::string username, password, fullName, role;
-    std::vector<Itinerary*> itineraries;
-    //roles : customer | manager
-    User(const std::string& uname, const std::string& pwd, const std::string& fname, const std::string& role);
-};
-
-// Global state manager
-class GlobalState {
+class GlobalState
+{
 public:
-    static User* getCurrentUser();
-    static void setCurrentUser(User* value);
-    static Itinerary* getCurrentItinerary();
-    static void setCurrentItinerary(Itinerary* value);
-    static std::map<std::string, User*> Users;
+    static User *getCurrentUser();
+    static void setCurrentUser(User *user);
+    static void clearCurrentUser();
+    static Itinerary *getCurrentItinerary();
+    static void setCurrentItinerary(Itinerary *itinerary);
 
 private:
-    static User* currentUser;
-    static Itinerary* currentItinerary;
+    static User *currentUser;
+    static Itinerary *currentItinerary;
 };
 
-// Function to initialize default user
+class AirCanadaAPI
+{
+public:
+    static std::vector<std::unique_ptr<AirCanadaFlight>> GetFlights(const std::string &from, const std::string &to,
+                                                                    const std::string &fromDate, const std::string &toDate,
+                                                                    int adults, int children);
+    static bool ReserveFlight(AirCanadaFlight *flight);
+    static bool CancelFlight(AirCanadaFlight *flight);
+};
+
+class TurkishAirlinesAPI
+{
+public:
+    static std::vector<std::unique_ptr<TurkishFlight>> GetFlights(const std::string &from, const std::string &to,
+                                                                  const std::string &fromDate, const std::string &toDate,
+                                                                  int adults, int children, int infants);
+    static bool ReserveFlight(TurkishFlight *flight);
+    static bool CancelFlight(TurkishFlight *flight);
+};
+
+class HotelAPI
+{
+public:
+    static std::vector<std::unique_ptr<HiltonRoom>> GetHiltonRooms(const std::string &city, const std::string &fromDate,
+                                                                   const std::string &toDate, int adults, int children);
+    static std::vector<std::unique_ptr<MarriottRoom>> GetMarriottRooms(const std::string &city, const std::string &fromDate,
+                                                                       const std::string &toDate, int adults, int children);
+    static bool ReserveRoom(HiltonRoom *room);
+    static bool ReserveRoom(MarriottRoom *room);
+    static bool CancelRoom(HiltonRoom *room);
+    static bool CancelRoom(MarriottRoom *room);
+};
+
+class StripeAPI
+{
+public:
+    static bool WithdrawMoney(const std::string &user, const std::string &card, double amount);
+};
+
+QString hashPassword(const QString &password);
+bool InitializeDatabase();
 void InitializeUsers();
 
 #endif // EXPEDIA_HPP

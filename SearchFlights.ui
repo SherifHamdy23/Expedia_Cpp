@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SearchFlights</class>
+ <widget class="QDialog" name="SearchFlights">
+  <property name="windowTitle">
+   <string>Search Flights</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog { background-color: #F5F6F5; }
+QLabel { font-family: 'Roboto', sans-serif; font-size: 16px; color: #333333; }
+QLineEdit, QDateEdit, QSpinBox { 
+    border: 1px solid #CCCCCC; 
+    border-radius: 5px; 
+    padding: 8px; 
+    font-size: 14px; 
+    background-color: #FFFFFF; 
+}
+QLineEdit:focus, QDateEdit:focus, QSpinBox:focus { border-color: #0071C2; }
+QPushButton { 
+    background-color: #0071C2; 
+    color: #FFFFFF; 
+    border-radius: 8px; 
+    padding: 10px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+QPushButton:hover { background-color: #005BB5; }</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Search Flights</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Roboto</family>
+       <pointsize>24</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>From</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="fromInput"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>To</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="toInput"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Departure Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="departureDateInput">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Return Date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDateEdit" name="returnDateInput">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Adults</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QSpinBox" name="adultsInput"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Children</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QSpinBox" name="childrenInput"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="searchButton">
+     <property name="text">
+      <string>Search</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>searchButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchFlights</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>346</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

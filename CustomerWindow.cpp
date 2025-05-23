@@ -1,19 +1,16 @@
 #include "CustomerWindow.h"
 #include "ui_CustomerWindow.h"
-#include "flightswindow.h"
-#include "hotelswindow.h"
-#include "Expedia.hpp"
+#include "searchflights.h"
+#include "searchhotels.h"
+#include "mybookings.h"
 
 CustomerWindow::CustomerWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::CustomerWindow)
+    : QMainWindow(parent), ui(new Ui::CustomerWindow)
 {
     ui->setupUi(this);
-
-    User *user = GlobalState::getCurrentUser();
-    if (user != nullptr)
-        ui->welcomeLabel->setText("Welcome, " + QString::fromStdString(user->fullName));
-
+    connect(ui->flightsButton, &QPushButton::clicked, this, &CustomerWindow::on_flightsButton_clicked);
+    connect(ui->hotelsButton, &QPushButton::clicked, this, &CustomerWindow::on_hotelsButton_clicked);
+    connect(ui->myBookingsButton, &QPushButton::clicked, this, &CustomerWindow::on_myBookingsButton_clicked);
 }
 
 CustomerWindow::~CustomerWindow()
@@ -21,18 +18,21 @@ CustomerWindow::~CustomerWindow()
     delete ui;
 }
 
-void CustomerWindow::on_flightwinBtn_clicked()
+void CustomerWindow::on_flightsButton_clicked()
 {
-    this->close();
-    flightsWindow *flightwin = new flightsWindow;
-    flightwin->show();
+    SearchFlights *search = new SearchFlights(this);
+    search->exec();
 }
 
-
-void CustomerWindow::on_hotelswinBtn_clicked()
+void CustomerWindow::on_hotelsButton_clicked()
 {
-    this->close();
-    HotelsWindow *hotelswin = new HotelsWindow;
-    hotelswin->show();
+    SearchHotels *search = new SearchHotels(this);
+    search->exec();
 }
 
+void CustomerWindow::on_myBookingsButton_clicked()
+{
+    MyBookings *bookings = new MyBookings(this);
+    bookings->show();
+    this->hide();
+}

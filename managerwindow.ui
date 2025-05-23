@@ -2,137 +2,91 @@
 <ui version="4.0">
  <class>ManagerWindow</class>
  <widget class="QMainWindow" name="ManagerWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>559</width>
-    <height>473</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>Manager Dashboard</string>
   </property>
   <property name="styleSheet">
-   <string>background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #F5F5F5);
-           background-image: url('https://www.transparentpng.com/thumb/plane/transparent-airplane-png-image-2.png');
-           background-repeat: no-repeat;
-           background-position: center 20%;
-           background-size: 150px;</string>
+   <string notr="true">background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #F5F5F5);
+background-image: url('https://www.transparentpng.com/thumb/plane/transparent-airplane-png-image-2.png');
+background-repeat: no-repeat;
+background-position: center 20%;
+background-size: 150px;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="mainLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>20</number>
     </property>
     <item>
-     <widget class="QLabel" name="welcomeLabel">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>20</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
+     <widget class="QLabel" name="label">
       <property name="styleSheet">
-       <string>color: #1E3A8A; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);</string>
+       <string notr="true">color: #1E3A8A; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);</string>
       </property>
       <property name="text">
        <string>Hello, Manager</string>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="buttonLayout">
+     <widget class="QLabel" name="statsLabel">
+      <property name="text">
+       <string>Statistics</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="spacing">
-       <number>15</number>
+       <number>10</number>
       </property>
       <item>
-       <widget class="QTableView" name="tableView">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QPushButton" name="flightsButton">
         <property name="styleSheet">
-         <string>background-color: #FFFFFF; alternate-background-color: #F0F8FF; 
-               gridline-color: #87CEEB; border: 1px solid #87CEEB; border-radius: 5px;</string>
+         <string notr="true">background-color: #4A90E2; color: white; border-radius: 10px; padding: 8px; qproperty-icon: url('https://www.svgrepo.com/show/126156/plane.svg'); qproperty-iconSize: 24px 24px;</string>
+        </property>
+        <property name="text">
+         <string>Flights</string>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="hotelsButton">
+        <property name="styleSheet">
+         <string notr="true">background-color: #50C878; color: white; border-radius: 10px; padding: 8px; qproperty-icon: url('https://www.svgrepo.com/show/1200/hotel.svg'); qproperty-iconSize: 24px 24px;</string>
+        </property>
+        <property name="text">
+         <string>Hotels</string>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
         </property>
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QPushButton" name="flightwinBtn">
-      <property name="minimumSize">
-       <size>
-        <width>150</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string>background-color: #4A90E2; color: white; border-radius: 10px; padding: 8px; qproperty-icon: url('https://www.svgrepo.com/show/126156/plane.svg'); qproperty-iconSize: 24px 24px;</string>
-      </property>
-      <property name="text">
-       <string>Flights</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="hotelswinBtn">
-      <property name="minimumSize">
-       <size>
-        <width>150</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string>background-color: #50C878; color: white; border-radius: 10px; padding: 8px; qproperty-icon: url('https://www.svgrepo.com/show/1200/hotel.svg'); qproperty-iconSize: 24px 24px;</string>
-      </property>
-      <property name="text">
-       <string>Hotels</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="minimumSize">
-       <size>
-        <width>150</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string>background-color: #F5A623; color: white; border-radius: 10px; padding: 8px; qproperty-icon: url('https://www.svgrepo.com/show/135/clock.svg'); qproperty-iconSize: 24px 24px;</string>
-      </property>
-      <property name="text">
-       <string>Soon</string>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>
@@ -146,12 +100,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string>background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #1E3A8A); color: white;</string>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar">
-   <property name="styleSheet">
-    <string>background-color: rgba(245, 245, 245, 0.8); color: #333333;</string>
+    <string notr="true">background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #1E3A8A); color: white;</string>
    </property>
   </widget>
  </widget>

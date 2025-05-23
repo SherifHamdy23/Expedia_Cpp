@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-class flightsWindow;
+namespace Ui
+{
+    class flightsWindow;
 }
 
 class flightsWindow : public QMainWindow
@@ -14,9 +15,10 @@ class flightsWindow : public QMainWindow
 public:
     explicit flightsWindow(QWidget *parent = nullptr);
     ~flightsWindow();
-    void onEditBtnClicked(int, QString);
 
 private slots:
+    void onSearchBtnClicked();
+    void performSearch(const QString &from, const QString &to, const QString &fromDate, const QString &toDate, int adults, int children);
     void on_backBtn_clicked();
     void on_AddFlight_clicked();
 
